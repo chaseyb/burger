@@ -31,9 +31,8 @@ objToSql = (ob) => {
     // Object for all our SQL statement functions.
     const orm = {
         // Display all burgers in the burger_db
-        all: function(table, cb) {
-            var queryString = "SELECT * FROM " + table + ";";
-    
+        all: (table, cb) => {
+            const queryString = "SELECT * FROM " + table + ";";
             connection.query(queryString, function(err, result) {
                 if (err) {
                     throw err;
@@ -54,16 +53,15 @@ objToSql = (ob) => {
 
     console.log(queryString);
 
-    connection.query(queryString, vals, function(err, result) {
+    connection.query(queryString, vals, (err, result) => {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   },
   // Set burger devoured status to true 
-  update: function(table, objColVals, condition, cb) {
+  update: (table, objColVals, condition, cb) => {
     const queryString = "UPDATE " + table;
 
     queryString += " SET ";
@@ -72,7 +70,7 @@ objToSql = (ob) => {
     queryString += condition;
 
     console.log(queryString);
-    connection.query(queryString, function(err, result) {
+    connection.query(queryString, (err, result) => {
       if (err) {
         throw err;
       }
@@ -80,16 +78,15 @@ objToSql = (ob) => {
     });
   },
   // Delete a burger from burgers_db
-  delete: function(table, condition, cb) {
-    var queryString = "DELETE FROM " + table;
+  delete: (table, condition, cb) => {
+    const queryString = "DELETE FROM " + table;
     queryString += " WHERE ";
     queryString += condition;
 
-    connection.query(queryString, function(err, result) {
+    connection.query(queryString, (err, result) => {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   }
