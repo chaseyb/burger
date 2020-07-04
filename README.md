@@ -19,8 +19,7 @@ A burger logger that uses MySQL, Node, Express, Handlebars, and a homemade ORM.
   ## Install
   ```
   npm init
-  npm install express
-  npm install mysql
+  npm i
   ```
  
   ## Usage
@@ -35,7 +34,7 @@ node server.js
   ![badge](https://img.shields.io/badge/License-Open-blue.svg)
 
   ## Heroku Link 
-  Coming soon 
+  [App link](https://eat-a-burger-5000.herokuapp.com "App Link")
             
   ## Questions?
   * [Chaseyb](https://github.com/Chaseyb)
