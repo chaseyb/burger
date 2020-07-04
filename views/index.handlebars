@@ -14,7 +14,7 @@
                         {{#each burgers}}
                         {{#unless devoured}}
                         <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
-                        <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id="{{this.id}}" data-newDevoured={{devour}}><span class="fa fa-cutlery"> Devour it!</span></button>
+                        <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id="{{this.id}}" data-newDevoured={{devour}}><span class="glyphicon glyphicon-cutlery"></span></button>
                         <hr>
                         {{/unless}}
                         {{/each}}
@@ -32,7 +32,7 @@
                         {{#if devoured}}
                         <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
                         <button type="button" class="trashburger btn btn-danger" id="trashbutton" data-id="{{this.id}}"
-                            data-newDevoured="{{devour}}"><span class="fa fa-trash"></span></button>
+                            data-newDevoured="{{devour}}"><span class="glyphicon glyphicon-trash"></span></button>
                         <hr>
                         {{/if}}
                         {{/each}}
@@ -50,7 +50,7 @@
           <div class="col-xs-12 text-center">
         <form class="create-form flex-center flex-column">
             <div class="order">
-                <label for="newburger" id="color-overrides">New order :</label>
+                <label for="newburger">New order :</label>
                 <input type="text" class="form-control" id="newburger" name="burger" id="enter_text">
                 {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
                 <br>
