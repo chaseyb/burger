@@ -1,0 +1,53 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .flex-center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  #newburger {
+    color: #5c5c5c;
+    border-radius: 10px;
+  }
+
+#leftside {
+    background-color: #f0ad4e;
+    color:  black;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 5px;
+  }
+
+#rightside {
+    background-color:  #b6b19b;  
+    color: black;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 5px;
+  }
+
+#eatbutton, #trashbutton {
+    float: right;
+}
+  
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 45px;
+    text-align: center;
+    width: 100%;
+}
+
+footer small {
+    line-height: 40px;
+    color: black;
+    font-size: 12px;
+}

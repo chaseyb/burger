@@ -1,22 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>Chase's Burger Joint</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Custom CSS -->
-		<link rel="stylesheet" href="/assets/css/burger_style.css" type="text/css">
-		<!-- jQuery -->
-		<script src="https://code.jquery.com/jquery.js"></script>
-		<!-- Bootstap CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-		<!-- Font Awesome Icons -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<!-- Javascript -->
-		<script src="/models/js/burger.js"></script>
-	</head>
-<body >
-		{{{ body }}}
-	</body>
-</html>
+<!-- Custom logo -->
+<div id="home" class="flex-center flex-column">
+    <img src="/assets/img/logo.png" style="width:400px; height: 400px;" alt="burger drawing">
+    </div>
+</div>
+<div class="container">
+<div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="leftside"><strong>Order Your Burger</strong>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#unless devoured}}
+                        <span><strong> {{this.id}} - {{this.burger_name}} </strong></span>
+                        <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id="{{this.id}}" data-newDevoured={{devour}}><span class="fa fa-cutlery"> Devour it!</span></button>
+                        <hr>
+                        {{/unless}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="rightside"><strong>Devoured Burgers</strong>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#if devoured}}
+                        <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
+                        <button type="button" class="trashburger btn btn-danger" id="trashbutton" data-id="{{this.id}}"
+                            data-newDevoured="{{devour}}"><span class="fa fa-trash"></span></button>
+                        <hr>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--endrow -->
+</div>
+<!-- Submit New Order -->
+      <div class="row mt-5"></div>
+      <div class="container">
+          <div class="col-xs-12 text-center">
+        <form class="create-form flex-center flex-column">
+            <div class="order">
+                <label for="newburger" id="color-overrides">New order :</label>
+                <input type="text" class="form-control" id="newburger" name="burger" id="enter_text">
+                {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
+                <br>
+                <button type="submit" class="btn btn-primary" id="addburger">Submit Order</button>
+            </div>
+            </form>
+            <br>
+                <p>Enter a burger you want to eat Click the "Submit" button.</p>
+            </div>
+        </div>
+    </div>
+</div>
