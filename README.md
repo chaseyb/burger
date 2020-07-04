@@ -4,7 +4,7 @@ A burger logger that uses MySQL, Node, Express, Handlebars, and a homemade ORM.
 ![GitHub language count](https://img.shields.io/github/languages/count/chaseyb/note-taker)
 ![GitHub top language](https://img.shields.io/github/languages/top/chaseyb/note-taker)
 
-   <img src="burgerapp.png">
+   <img src="public/assets/img/burgerapp.png">
 
   ## Table of Contents
   - [Description](#description)
