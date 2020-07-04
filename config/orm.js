@@ -1,5 +1,5 @@
 // Import (require) connection.js
-const connection = require("../config/connection.js");
+var connection = require("../config/connection.js");
 
 // Helper function for SQL syntax.
 function printQuestionMarks(num) {
@@ -12,10 +12,10 @@ function printQuestionMarks(num) {
 
 // Helper function to convert object key/value pairs to SQL syntax
 function objToSql(ob) {
-    const arr = [];
+    var arr = [];
     // loop through the keys and push the key/value as a string int arr
-    for (const key in ob) {
-        const value = ob[key];
+    for (var key in ob) {
+        var value = ob[key];
         // check to skip hidden properties
         if (Object.hasOwnProperty.call(ob, key)) {
             // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
@@ -31,12 +31,12 @@ function objToSql(ob) {
     return arr.toString();
 }
 
-const orm = {
+var orm = {
     // Display all burgers in the db.
-    selectAll: (table, cb) => {
-        const queryString = "SELECT * FROM " + table + ";";
+    selectAll: function(table, cb) {
+        var queryString = "SELECT * FROM " + table + ";";
 
-        connection.query(queryString, (err, result) => {
+        connection.query(queryString, function(err, result) {
             if (err) {
                 throw err;
             }
@@ -44,8 +44,8 @@ const orm = {
         });
     },
     // Add a burger to the db.
-    insertOne: (table, cols, vals, cb) => {
-        const queryString = "INSERT INTO " + table;
+    insertOne: function(table, cols, vals, cb) {
+        var queryString = "INSERT INTO " + table;
         queryString += " (";
         queryString += cols.toString();
         queryString += ") ";
@@ -55,7 +55,7 @@ const orm = {
 
         console.log(queryString);
 
-        connection.query(queryString, vals, (err, result) => {
+        connection.query(queryString, vals, function(err, result) {
             if (err) {
                 throw err
             }
@@ -63,8 +63,8 @@ const orm = {
         });
     },
     // Set burger devoured status to true.
-    updateOne: (table, objColVals, condition, cb) => {
-        const queryString = "UPDATE " + table;
+    updateOne: function(table, objColVals, condition, cb) {
+        var queryString = "UPDATE " + table;
         queryString += " SET ";
         queryString += objToSql(objColVals);
         queryString += " WHERE ";
@@ -72,7 +72,7 @@ const orm = {
 
         console.log(queryString);
 
-        connection.query(queryString, (err, result) => {
+        connection.query(queryString, function(err, result) {
             if (err) {
                 throw err
             }
@@ -80,14 +80,14 @@ const orm = {
         });
     },
     // Delete a burger from the db.
-    deleteOne: (table, condition, cb) => {
-        const queryString = "DELETE FROM " + table;
+    deleteOne: function(table, condition, cb) {
+        var queryString = "DELETE FROM " + table;
         queryString += " WHERE ";
         queryString += condition;
 
         console.log(queryString);
 
-        connection.query(queryString, (err, result) => {
+        connection.query(queryString, function(err, result) {
             if (err) {
                 throw err
             }
