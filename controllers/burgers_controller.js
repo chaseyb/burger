@@ -1,15 +1,15 @@
 // dependencies
-var express = require("express");
+const express = require("express");
 // import the model to use its db functions for burger.js
-var burger = require("../models/burger.js");
+const burger = require("../models/burger.js");
 const { realpathSync } = require("fs");
 const { resourceUsage } = require("process");
 
 // create the router for the app, and export 
-var router = express.Router();
+const router = express.Router();
 // Create routes and set up logic where required.
-router.get("/", function (req, res) {
-    burger.selectAll(function (data) {
+router.get("/", (req, res) => {
+    burger.selectAll((data) => {
         var hbsObject = {
             burgers: data
         };
@@ -19,18 +19,18 @@ router.get("/", function (req, res) {
 });
 
 //add new Burger to the db
-router.post("/api/burgers", function (req, res) {
-    burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function (result) {
+router.post("/api/burgers", (req, res) => {
+    burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], (result) => {
         // send back the ID of the new burger
         res.json({ id: result.insertId });
     });
 });
 
 // set burger devoured status to true
-router.put("/api/burgers/:id", function (req, res) {
-    var condition = "id =  " + req.params.id;
+router.put("/api/burgers/:id", (req, res) => {
+    const condition = "id =  " + req.params.id;
     console.log("condition", condition);
-    burger.updateOne({ devoured: req.body.devoured }, condition, function (result) {
+    burger.updateOne({ devoured: req.body.devoured }, condition, (result) => {
         if (result.changedRows === 0) {
             // if no rows were changed, then the ID must not exit, so 404
             return res.status(404).end();
@@ -42,11 +42,11 @@ router.put("/api/burgers/:id", function (req, res) {
 });
 
 // delete Burger
-router.delete("/api/burgers/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
+router.delete("/api/burgers/:id", (req, res) => {
+    const condition = "id = " + req.params.id;
     console.log("condition", condition);
 
-    burger.deleteOne(condition, function (result) {
+    burger.deleteOne(condition, (result) => {
         if (result.changedRows === 0) {
             // if no rows were changed, then the ID must not exit, so 404
             return res.status(404).end();
