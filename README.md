@@ -19,8 +19,7 @@ A burger logger that uses MySQL, Node, Express, Handlebars, and a homemade ORM.
   ## Install
   ```
   npm init
-  npm install express
-  npm install mysql
+  npm i
   ```
  
   ## Usage
